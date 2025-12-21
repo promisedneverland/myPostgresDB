@@ -2,7 +2,7 @@
 
 # Database connection parameters
 # You might need to adjust these based on your configuration
-DB_NAME="postgres"
+DB_NAME="testHarmony"
 DB_USER=$(whoami) # Default to current user, often works for local dev
 # DB_PORT="5432" 
 
