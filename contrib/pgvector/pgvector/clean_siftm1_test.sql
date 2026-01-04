@@ -1,4 +1,6 @@
 CREATE EXTENSION IF NOT EXISTS vector;
+-- 临时调整为 2GB (只影响当前窗口，断开连接后失效)
+SET maintenance_work_mem = '2GB';
 
 -- base 表：带标量字段 + 向量
 DROP TABLE IF EXISTS sift_base;
@@ -17,11 +19,11 @@ CREATE TABLE sift_query (
 );
 
 COPY sift_base (id, category, price, v)
-FROM '/home/pg172/vector_data/sift1m/sift_base_pg.csv'
+FROM '/home/lichengqi/sift/sift_base.csv'
 WITH (FORMAT csv);
 
 COPY sift_query (id, v)
-FROM '/home/pg172/vector_data/sift1m/sift_query_pg.csv'
+FROM '/home/lichengqi/sift/sift_query.csv'
 WITH (FORMAT csv);
 
 DROP INDEX IF EXISTS sift_base_v_ivfflat;
